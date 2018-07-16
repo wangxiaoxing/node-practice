@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="jquery-3.3.1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="ajax">ajax请求</button>
+    <script>
+      $('#ajax').click(function(){
+          $.ajax({
+              url:'/comment',
+              type:'post',
+              data:{custom:'ths',age:30},
+              async:true,
+              success:function(data,status,xhr){
+                  console.log('服务器返回的数据是：'+data);
+                  console.log('返回的信息是： '+xhr.getAllResponseHeaders());
+              },
+              error:function(xhr,status,error){
+                  console.debug('错误信息：'+error);
+              },
+              complete:function(xhr,status){
+                  console.log('全部流程结束');
+              }
+          })
+      })
+    </script>
+</body>
+</html>
